@@ -1,0 +1,14 @@
+.box_Product:hover .box_img {
+    transform: scale(1.1);
+    transition: all 0.3s ease-in;
+}
+
+/* .box_Product:hover .btn_add_to_car {
+    transform: translateY(0px);
+    transition: all 0.2s ease-in;
+} */
+
+figure {
+    width: 100%;
+    overflow: hidden;
+}

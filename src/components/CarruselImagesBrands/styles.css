@@ -1,0 +1,69 @@
+#app {
+    height: 100%;
+}
+html,
+body {
+    position: relative;
+    height: 100%;
+}
+
+body {
+    background: #eee;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+
+    height: 80%;
+}
+
+.swiper {
+    width: 100%;
+    /* padding: 50px;
+    border: 1px black solid; */
+    /* background: #33373e; */
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    /* margin-left: 10%; */
+    height: 80%;
+    object-fit: cover;
+    /* border: 1px black solid; */
+}
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 8px !important;
+    font-weight: 900;
+    background-color: #6a5de3;
+    padding: 10px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    color: rgb(250, 249, 249);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+}
+:root {
+    --swiper-theme-color: #6a69fb !important;
+}

@@ -1,0 +1,13 @@
+export { default as ViewUserFormModal } from './AdminLayout/UserFormModal';
+export { default as ViewMenuLateral } from './AdminLayout/MenuLateral';
+export { default as ViewUserTable } from './AdminLayout/UserTable';
+export { default as ViewProductTable } from './AdminLayout/ProductTable/';
+export { default as ViewProductFormModal } from './AdminLayout/ProductFormModal';
+export { default as ViewCategoriesTable } from './AdminLayout/CategoriesTable';
+export { default as ViewCategoriesFormModal } from './AdminLayout/CategoriesFormModal';
+export { default as ViewBrandsTable } from './AdminLayout/BrandsTable';
+export { default as ViewBrandFormModal } from './AdminLayout/BrandsFormModal';
+export { default as ViewSourceModal } from './AdminLayout/SourceModal';
+export { default as ViewSourceTable } from './AdminLayout/SourceTable';
+export { default as ViewTypeMaterialTable } from './AdminLayout/TypeMaterialTable';
+export { default as ViewTypeMaterialModal } from './AdminLayout/TypeMaterialModal';
