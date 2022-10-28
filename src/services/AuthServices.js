@@ -68,6 +68,10 @@ export const isAuth = () => {
         // console.log(jsonPayload);
         return true;
     }
+    else{
+
+        
+    }
 
     return false;
     // const token = window.localStorage.getItem("token");

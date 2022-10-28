@@ -53,6 +53,7 @@ const DataProviderAdmin = ({ children }) => {
         categories: true,
         name_buttom: 'Actulizar',
         id_category: null
+       
     });
 
     const [userData, setUserData] = useState({
@@ -68,7 +69,7 @@ const DataProviderAdmin = ({ children }) => {
         name: '',
         description: '',
         price: 0,
-
+        // image: null,
         stock: 0,
         category_id: 0,
         subcategory_id: 0,
@@ -84,23 +85,23 @@ const DataProviderAdmin = ({ children }) => {
         action: true
     });
 
-    // const handleDelete = (funtion) => {
-    //     Swal.fire({
-    //         title: 'Seguro que desea eliminar este usuario?',
-    //         text: 'esta accion no podra ser revertido!',
-    //         icon: 'warning',
-    //         showCancelButton: true,
-    //         confirmButtonColor: '#3085d6',
-    //         cancelButtonColor: '#d33',
-    //         confirmButtonText: 'Aceptar'
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             funtion();
-    //             Swal.fire('Se ha Borrado', 'usuario eliminado', 'success');
-    //             window.location.reload();
-    //         }
-    //     });
-    // };
+    const handleDelete = (funtion) => {
+        Swal.fire({
+            title: 'Seguro que desea eliminar este usuario?',
+            text: 'esta accion no podra ser revertido!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Aceptar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                funtion();
+                Swal.fire('Se ha Borrado', 'usuario eliminado', 'success');
+                window.location.reload();
+            }
+        });
+    };
     return (
         <DataAdminContext.Provider
             value={{
@@ -116,7 +117,7 @@ const DataProviderAdmin = ({ children }) => {
                 setIdProduct,
                 CategoriesDataUtils,
                 setCategoriesDataUtils,
-                // handleDelete,
+                handleDelete,
                 dataBrands,
                 setDataBrands,
                 statusDisplay,

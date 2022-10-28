@@ -28,23 +28,19 @@ const ImageScreenSmall = ({ dataProduct }) => {
     );
 };
 
-const ImageScreenBig = ({ dataProduct }) => {
+const ImageScreenBig = ({ dataProduct, images }) => {
     const [indexImage, setIndexImage] = useState(0);
 
     return (
         <Card variant="outlined" sx={{ position: 'relative', paddingBottom: '100px', border: 'none' }}>
             <Grid>
-                <CardMedia
-                    sx={{ width: '80%' }}
-                    component="img"
-                    image={dataProduct.images !== undefined && dataProduct.images[indexImage].images.image}
-                />
+                <CardMedia sx={{ width: '80%' }} component="img" image={images[0] !== undefined && images[indexImage].images.image} />
             </Grid>
             <Grid container elevation={0} justifyContent="center" sx={{ position: 'absolute', top: '85%', left: 5, width: '95%' }}>
                 <Grid container item xs={12} justifyContent="center">
                     {/* {console.log(`iiiiiiiiiiiiiiiiiiiiiiiiiiii`, dataProduct.images)} */}
-                    {dataProduct.images !== undefined &&
-                        dataProduct.images.map((data, index) => (
+                    {images !== undefined &&
+                        images.map((data, index) => (
                             <Grid item xs={1.5} key={index} mx={1} mt={2}>
                                 <Button sx={styles_card} size="small">
                                     <img
@@ -64,7 +60,7 @@ const ImageScreenBig = ({ dataProduct }) => {
     );
 };
 
-const DetailsImages = ({ dataProduct }) => {
+const DetailsImages = ({ dataProduct, images }) => {
     const handleResize = () => {
         setWidth(window.innerWidth);
     };
@@ -85,9 +81,9 @@ const DetailsImages = ({ dataProduct }) => {
     return (
         <div>
             {/* {getImage()} */}
-
+            {console.log('images de producto', images)}
             {/* <ImageScreenBig dataProduct={dataProduct} /> */}
-            {width >= 1200 ? <ImageScreenBig dataProduct={dataProduct} /> : <ImageScreenSmall dataProduct={dataProduct} />}
+            {width >= 1200 ? <ImageScreenBig dataProduct={dataProduct} images={images} /> : <ImageScreenSmall dataProduct={dataProduct} />}
         </div>
     );
 };

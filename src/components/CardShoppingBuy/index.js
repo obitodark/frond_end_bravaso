@@ -1,4 +1,4 @@
-import { Card, Box, CardContent, Typography, IconButton, CardMedia, Alert } from '@mui/material';
+import { Card, Box, CardContent, Typography, IconButton, CardMedia, Alert, Grid, Button } from '@mui/material';
 
 import ClearIcon from '@mui/icons-material/Clear';
 // import { DataContext } from '../../Context/DataProvider';
@@ -22,6 +22,21 @@ const CardShoppingBuy = ({ listShoppingCart }) => {
         overflow: 'hidden'
     };
 
+    const EmptyCart = () => {
+        return (
+            <Grid>
+                <Typography variant="h5" color="initial" my={2} fontWeight={300}>
+                    {' '}
+                    No tienes Produtos en el carro
+                </Typography>
+                <Button onClick={() => history('/')} variant="contained">
+                    {' '}
+                    Ir Comprar
+                </Button>
+            </Grid>
+        );
+    };
+
     const handleNavigateDetails = (id) => {
         setIdProduct(id);
         history('/Details-Product');
@@ -38,10 +53,11 @@ const CardShoppingBuy = ({ listShoppingCart }) => {
         getCantProduct();
         setBandera(!bandera);
     };
+
     return (
         <div>
             {/* {console.log('shopping', listShoppingCart.data)} */}
-            {listShoppingCart !== undefined &&
+            {listShoppingCart.length > 0 ? (
                 listShoppingCart.map((list, index) => (
                     <Card key={index} sx={{ display: 'flex', position: 'relative', margin: '20px 0px', border: 'none', boxShadow: 'none' }}>
                         <CardMedia
@@ -85,7 +101,10 @@ const CardShoppingBuy = ({ listShoppingCart }) => {
                             />
                         </Box>
                     </Card>
-                ))}
+                ))
+            ) : (
+                <EmptyCart />
+            )}
         </div>
     );
 };

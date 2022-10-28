@@ -64,13 +64,14 @@ const NavBars = () => {
                             <Badge
                                 badgeContent={badgeFavorite}
                                 color="secondary"
-                                anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'left'
-                                }}
+                                // anchorOrigin={{
+                                //     vertical: 'top',
+                                //     horizontal: 'left'
+                                // }}
+                                sx={{ marginX: '10px' }}
                             >
                                 <FavoriteBorderOutlinedIcon
-                                    sx={{ color: '#6a5de3', cursor: 'pointer', marginX: '10px' }}
+                                    sx={{ color: '#6a5de3', cursor: 'pointer' }}
                                     onClick={() => history('/list-Favorites')}
                                 />
                             </Badge>

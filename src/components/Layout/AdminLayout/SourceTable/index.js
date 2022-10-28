@@ -9,7 +9,7 @@ import { DataContext } from '../../../../Context/DataProvider';
 import SourceProductServices from '../../../../services/SourceProductServices';
 
 const SourceTable = ({ setOpen }) => {
-    const { setOpenModalSource, dataSource, setDataSource } = useContext(DataAdminContext);
+    const { dataSource, setDataSource } = useContext(DataAdminContext);
     const { listSource, refreshSource, setRefreshSource } = useContext(DataContext);
 
     const columns = [

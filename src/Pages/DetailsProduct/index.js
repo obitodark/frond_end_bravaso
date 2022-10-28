@@ -6,9 +6,18 @@ import { DataContext } from '../../Context/DataProvider';
 const DetailsProduct = () => {
     const { listProduct, idProduct } = useContext(DataContext);
     const [dataProduct, setDataProduct] = useState([]);
+    const [images, setImages] = useState([]);
     const getProduct = async () => {
         const product = listProduct.filter((data) => data.id === idProduct);
         await setDataProduct(product[0]);
+        const dat = product[0].images
+            .map((data) => {
+                return data;
+            })
+            .filter((ima) => ima.images.status === true);
+
+        setImages(dat);
+        console.log('gagaaagag', product[0]);
     };
     useEffect(() => {
         getProduct();
@@ -35,7 +44,7 @@ const DetailsProduct = () => {
 
                 <Grid item container xs={12} sm={8} md={5} xl={4} justifyContent="center">
                     <Grid item xs={12}>
-                        <ViewDetailsImage dataProduct={dataProduct} />
+                        <ViewDetailsImage dataProduct={dataProduct} images={images} />
                     </Grid>
                 </Grid>
                 <Grid item p={1} mx={3} xs={12} sm={12} md={6} xl={5}>

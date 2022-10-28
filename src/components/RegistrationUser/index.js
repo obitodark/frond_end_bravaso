@@ -5,6 +5,8 @@ import { DataAdminContext } from '../../Context/ContextAdmin/DataProviderAdmin';
 import { useContext } from 'react';
 import User from '../../services/UserServices';
 import { useState } from 'react';
+import Swal from 'sweetalert2';
+
 const RegistrationUser = () => {
     const { userData, setUserData } = useContext(DataAdminContext);
     const [getStatusUsername, setStatusUsername] = useState(200);
@@ -31,7 +33,15 @@ const RegistrationUser = () => {
         await setStatusDni(dni);
         if (username === 200 && email === 200 && dni === 200) {
             await User.createUser(userData);
-            alert('registro existoso');
+            await Swal.fire({
+                position: 'center',
+                icon: 'success',
+
+                title: 'Registro Exitoso',
+                showConfirmButton: false,
+                timer: 2000
+            });
+            window.location.reload();
         }
         // if (response.ok) {
         //     console.log('d noisponbel');

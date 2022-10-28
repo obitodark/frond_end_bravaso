@@ -27,7 +27,7 @@ const filterProduct = async (data, page = 1, per_page = 12) => {
             body: JSON.stringify(data)
         });
         const results = await response.json();
-        console.log('data', results);
+        // console.log('data', results);
         return results;
     } catch (error) {
         return error;

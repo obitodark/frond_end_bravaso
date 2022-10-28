@@ -107,7 +107,7 @@ const BoxFilter = () => {
                                 <MenuItem value={'All'}>All</MenuItem>
                                 {removeDuplicates(
                                     filterBySubCategory.map((list) => {
-                                        console.log('lista de marcars', list);
+                                        // console.log('lista de marcars', list);
                                         return { name: list.brand.name, id: list.brand.id };
                                     })
                                 ).map((list, index) => (

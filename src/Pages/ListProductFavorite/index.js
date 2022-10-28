@@ -1,6 +1,7 @@
-import { Grid, Container, Typography } from '@mui/material';
+import { Grid, Container, Typography, Button } from '@mui/material';
 import { useState, useContext } from 'react';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CartProducts from '../../components/CartProducts';
 // import Products from '../../components/Products';
 
@@ -16,11 +17,22 @@ const styleText = {
 const ListProductFavorite = () => {
     const [productFavorite, setProductFavorite] = useState([]);
     const { bandera } = useContext(DataContext);
-    // useEffect(() => {
-    //     list = FavoriteProductServices.ListProductFavorite();
-    //     console.log('favoite', list);
-    // }, []);
-    // console.log('list', FavoriteProductServices.ListProductFavorite());
+    const history = useNavigate();
+
+    const EmptyCart = () => {
+        return (
+            <Grid>
+                <Typography variant="h5" color="initial" my={2} fontWeight={300}>
+                    {' '}
+                    No tienes Produtos Selecionados a Favoritos
+                </Typography>
+                <Button onClick={() => history('/')} variant="contained">
+                    {' '}
+                    Ir Inicio
+                </Button>
+            </Grid>
+        );
+    };
 
     const getlist = async () => {
         const response = await FavoriteProductServices.listProductFavites();
@@ -56,7 +68,7 @@ const ListProductFavorite = () => {
                         sx={{ height: '100%' }}
                         justifyContent="start"
                     >
-                        {productFavorite !== undefined ? (
+                        {productFavorite.length > 0 ? (
                             productFavorite.map((data, index) => (
                                 <Grid item key={index} xs={6} sm={4} md={3} xl={2.4}>
                                     {addElement(data.product)}
@@ -64,9 +76,7 @@ const ListProductFavorite = () => {
                                 </Grid>
                             ))
                         ) : (
-                            <Typography variant="h5" color="initial" fontWeight={300} align="center" mb={10}>
-                                No tiene productos favoritos
-                            </Typography>
+                            <EmptyCart />
                         )}
                     </Grid>
                 </Grid>

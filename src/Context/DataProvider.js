@@ -73,8 +73,22 @@ const DataProvider = ({ children }) => {
     };
     const getFilterProduct = async (data, page) => {
         const response = await ProductsServices.filterProduct(data, page);
-        // console.log('data context', response);
+
         setProductsByPaginacion(data);
+        // const dat = productData.images
+        // .map((data) => {
+        //     return data;
+        // })
+        // .filter((ima) => ima.images.status === true);
+        // const filter = response.filter;
+        // response.map((res, index) => {
+        //     const dat = res.images
+        //         .map((data) => {
+        //             return data;
+        //         })
+        //         .filter((ima) => ima.images.status === true);
+        //     console.log('data context', dat);
+        // });
         await setFilterByProduct(response);
         // await setFilterBySubCategory(response);
     };

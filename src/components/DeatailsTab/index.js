@@ -60,7 +60,7 @@ export default function BasicTabs({ dataProduct }) {
                 <DetailsTable dataProduct={dataProduct} />
             </TabPanel>
             <TabPanel value={value} index={2}>
-                Item Three
+                Sin Comentarios ...
             </TabPanel>
         </Box>
     );

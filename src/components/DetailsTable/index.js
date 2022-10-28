@@ -8,7 +8,7 @@ const DetailsTable = ({ dataProduct }) => {
     const rows = [
         createData('Nombre', dataProduct.name),
         createData('Marca', dataProduct.brand.name),
-        createData('Nombre', dataProduct.name),
+
         createData('Tipo', dataProduct.subcategory.name),
 
         createData('Peso', dataProduct.weight),
