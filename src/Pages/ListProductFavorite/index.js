@@ -24,7 +24,7 @@ const ListProductFavorite = () => {
             <Grid>
                 <Typography variant="h5" color="initial" my={2} fontWeight={300}>
                     {' '}
-                    No tienes Produtos Selecionados a Favoritos
+                    No tines Produtos Selecionados a Favoritos
                 </Typography>
                 <Button onClick={() => history('/')} variant="contained">
                     {' '}
@@ -68,7 +68,7 @@ const ListProductFavorite = () => {
                         sx={{ height: '100%' }}
                         justifyContent="start"
                     >
-                        {productFavorite.length > 0 ? (
+                        {productFavorite !== undefined ? (
                             productFavorite.map((data, index) => (
                                 <Grid item key={index} xs={6} sm={4} md={3} xl={2.4}>
                                     {addElement(data.product)}

@@ -7,6 +7,7 @@ import { useState, useRef, useContext } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
 
 import Auth from '../../services/AuthServices';
+import { useNavigate } from 'react-router-dom';
 
 const LoginModal = ({ openModal, setOpenModal }) => {
     const style = {
@@ -30,6 +31,7 @@ const LoginModal = ({ openModal, setOpenModal }) => {
     //     weightRange: '',
     //     showPassword: false
     // });
+
     const imputPassword = useRef();
     const imputUsername = useRef();
     const [userCredentials, setUserCredentials] = useState({
@@ -37,6 +39,7 @@ const LoginModal = ({ openModal, setOpenModal }) => {
         password: ''
     });
     const { authentication, setAuthentication } = useContext(AuthContext);
+    const history = useNavigate();
 
     const handleInputChange = (e) => {
         const { name, value } = e.currentTarget;
@@ -104,6 +107,11 @@ const LoginModal = ({ openModal, setOpenModal }) => {
     //     event.preventDefault();
     // };
 
+    const handleRegister = () => {
+        const status = false;
+        setOpenModal(status);
+        history('/Registration-user');
+    };
     return (
         <Modal open={openModal} onClose={handleClose} aria-labelledby="parent-modal-title" aria-describedby="parent-modal-description">
             <Box sx={{ ...style, width: { xs: '100%', sm: '500px' }, height: { xs: '100%', sm: '550px' }, position: 'relative' }}>
@@ -198,9 +206,9 @@ const LoginModal = ({ openModal, setOpenModal }) => {
                     </Grid>
                     <Grid item container xs={12} justifyContent="center">
                         <Grid item>
-                            <Link href="http://localhost:3000/Registration-User" color="#6a5de3" sx={{ fontSize: '15px' }}>
+                            <Typography onClick={handleRegister} color="#6a5de3" sx={{ fontSize: '15px', cursor: 'pointer' }}>
                                 Registrarse ?
-                            </Link>
+                            </Typography>
                         </Grid>
                     </Grid>
                 </Grid>
