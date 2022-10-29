@@ -43,13 +43,6 @@ const ActionProduct = () => {
     // const [images, setImages] = useState({});
 
     const getImages = () => {
-        // const dat = productData.images
-        //     .map((data) => {
-        //         return data;
-        //     })
-        //     .filter((ima) => ima.images.status === true);
-        // console.log('datadatadata', dat);
-        // let listimages = dat.map((data, index) => {
         let listimages = productData.images.map((data, index) => {
             let keys = `imagen${index}`;
 
