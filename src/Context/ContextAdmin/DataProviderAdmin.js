@@ -53,7 +53,6 @@ const DataProviderAdmin = ({ children }) => {
         categories: true,
         name_buttom: 'Actulizar',
         id_category: null
-       
     });
 
     const [userData, setUserData] = useState({
@@ -62,6 +61,7 @@ const DataProviderAdmin = ({ children }) => {
         username: '',
         dni: '',
         email: '',
+        rol_id: 0,
         status: true
     });
 

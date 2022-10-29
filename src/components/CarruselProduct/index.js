@@ -16,7 +16,7 @@ import { DataContext } from '../../Context/DataProvider';
 import { useState, useContext } from 'react';
 import CartProducts from '../CartProducts';
 
-export default function CarruselProduct() {
+export default function CarruselProduct({ data }) {
     const { setOpenBoxCategories, setFilterByProduct, filterByProduct, listProduct } = useContext(DataContext);
     return (
         <>
@@ -61,8 +61,8 @@ export default function CarruselProduct() {
                         }
                     }}
                 >
-                    {listProduct.length > 0 &&
-                        listProduct.map((data, index) => (
+                    {data.length > 0 &&
+                        data.map((data, index) => (
                             <SwiperSlide key={index + 1}>
                                 <CartProducts data={data} />
                             </SwiperSlide>

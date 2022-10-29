@@ -31,7 +31,7 @@ const TableData = ({ setOpenFormModal }) => {
             headerName: 'Avatar',
             width: 80,
             editable: true,
-            renderCell: (params) => <Avatar sx={{ height: '67px', width: '67px' }} src={params.value} />
+            renderCell: (params) => <Avatar sx={{ height: '67px', width: '67px', border: '2px solid #4998F1 ' }} src={params.value} />
 
             // <img sx={{ borderRadius: '50%' }} width={60} src={params.value} />
         },
@@ -111,7 +111,8 @@ const TableData = ({ setOpenFormModal }) => {
             username: dataUser[0].username,
             dni: dataUser[0].dni,
             email: dataUser[0].email,
-            status: dataUser[0].status
+            status: dataUser[0].status,
+            rol_id: dataUser[0].role.id
         });
 
         setIdUser(id);
@@ -123,7 +124,7 @@ const TableData = ({ setOpenFormModal }) => {
         data.avatar =
             data.imagesUser[0] !== undefined
                 ? data.imagesUser[0].images.image
-                : 'https://alfabetajuega.com/hero/2019/08/one-punch-man-saitama-2.jpg?width=1200';
+                : 'https://cdn.icon-icons.com/icons2/1999/PNG/512/avatar_driver_people_person_profile_user_icon_123374.png';
         data.type = data.role.name;
         // listProduct[0].images[0].images.image
         return data;

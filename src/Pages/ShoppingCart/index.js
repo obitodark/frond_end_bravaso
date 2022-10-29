@@ -1,4 +1,4 @@
-import { Typography, Container, Grid, Divider } from '@mui/material';
+import { Typography, Container, Grid, Divider, Backdrop, CircularProgress } from '@mui/material';
 import { useState, useEffect, useContext } from 'react';
 import { ViewCardShoppingBuy, ViewDetailsPrice } from '../../components';
 import { DataContext } from '../../Context/DataProvider';
@@ -9,12 +9,14 @@ const ShoppingCart = () => {
     const [hide, setHide] = useState('block');
     const [listShoppingCart, setListShoppingCart] = useState([]);
     const [listCart, setListCart] = useState([]);
+    const [open, setOpen] = useState(false);
     const statusHide = () => {
         setHide(window.innerWidth < 900 ? 'none' : 'block');
     };
     window.addEventListener('resize', statusHide);
 
     const getListShopping = async () => {
+        setOpen(true);
         const list = await ShoppingCartServices.listShoppingCart();
         const order = list.data.sort(function (a, b) {
             return a.id - b.id;
@@ -22,6 +24,7 @@ const ShoppingCart = () => {
         await setListCart(order);
         // console.log('orden de carrito de compras', order);
         await setListShoppingCart(list);
+        setOpen(false);
     };
 
     useEffect(() => {
@@ -29,6 +32,9 @@ const ShoppingCart = () => {
     }, [bandera]);
     return (
         <Container>
+            <Backdrop sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }} open={open}>
+                <CircularProgress color="inherit" />
+            </Backdrop>
             <Grid container mt={10} spacing={2}>
                 <Grid item sm={12}>
                     <Typography variant="h5" color="initial">

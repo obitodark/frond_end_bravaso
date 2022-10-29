@@ -1,4 +1,4 @@
-import { Grid, Typography, Pagination, Container } from '@mui/material';
+import { Grid, Typography, Pagination, Container, Divider } from '@mui/material';
 
 import { useContext, useEffect } from 'react';
 // import Products from '../Products';
@@ -79,13 +79,22 @@ const ProductCart = () => {
     return (
         <Container maxWidth="xl" sx={{ marginTop: '60px' }}>
             <Grid item container xs={12} justifyContent="center" spacing={1.5}>
+                <Grid item xs={12}>
+                    <Typography variant="h6" textAlign="left" sx={{ fontWeight: '300', color: 'rgba(102,102,102)' }}>
+                        Lista Productos
+                    </Typography>
+                </Grid>
                 <Grid item container xs={12} justifyContent="space-between">
                     <Grid item my={1}>
-                        <Typography variant="h5" textAlign="left" sx={{ fontWeight: '300', color: 'rgba(102,102,102)' }}>
-                            Lista de Productos
-                        </Typography>
+                        {filterByProduct.pagination !== undefined && filterByProduct.pagination.totalRecords > 0 && (
+                            <Typography variant="subtitle1" textAlign="left" sx={{ fontWeight: '300', color: 'rgba(102,102,102)' }}>
+                                Inicio/Categorias/{filterByProduct.results !== undefined && filterByProduct.results[0].category.name}/
+                                {filterByProduct.results !== undefined && filterByProduct.results[0].subcategory.name}
+                                {/* {console.log('dataaaaaa', filterByProduct.results !== undefined && filterByProduct.results[0].subcategory.name)} */}
+                            </Typography>
+                        )}
                     </Grid>
-                    {console.log(filterByProduct)}
+                    {/* {console.log(filterByProduct)} */}
                     <Grid item>
                         <Pagination
                             count={filterByProduct.results !== undefined && filterByProduct.pagination.totalPages}
@@ -96,6 +105,9 @@ const ProductCart = () => {
                             defaultPage={1}
                         />
                     </Grid>
+                </Grid>
+                <Grid item xs={12}>
+                    <Divider sx={{ background: 'black' }} />
                 </Grid>
 
                 <Grid item container md={2.5} xl={2.5} sx={{ display: { xs: 'none', lg: 'block' } }}>

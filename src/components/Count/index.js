@@ -1,4 +1,5 @@
-import { Box, Typography, Grid } from '@mui/material';
+import { Box, Typography, Grid, Alert } from '@mui/material';
+import { useState } from 'react';
 import { useRef, useContext } from 'react';
 import { DataAdminContext } from '../../Context/ContextAdmin/DataProviderAdmin';
 import { DataContext } from '../../Context/DataProvider';
@@ -8,6 +9,7 @@ import ShoppingCartServices from '../../services/ShoppingCartServices';
 const Count = ({ stock, setAmount, cant, id }) => {
     const pathname = window.location.pathname;
     const { bandera, setBandera, setBadgeShoppingCart, refreshCount, setRefreshCount } = useContext(DataContext);
+    const [display, setDisplay] = useState('none');
     // alert(pathname);
     // if (pathname === '/Shopping-Cart') console.log('gagagag');
     const { setStatusDisplay } = useContext(DataAdminContext);
@@ -47,6 +49,17 @@ const Count = ({ stock, setAmount, cant, id }) => {
         //     setTimeout(() => setStatusDisplay('none'), 1200);
         //     return;
         // }
+        if (countText.current.innerText === String(stock)) {
+            if (pathname !== '/Shopping-Cart') {
+                setStatusDisplay('inline');
+                setTimeout(() => setStatusDisplay('none'), 1200);
+                return;
+            } else {
+                setDisplay('inline');
+                setTimeout(() => setDisplay('none'), 1200);
+                return;
+            }
+        }
         if (countText.current.innerText === '10') return;
         countText.current.innerText = Number(countText.current.innerText) + 1;
 
@@ -70,6 +83,9 @@ const Count = ({ stock, setAmount, cant, id }) => {
         <Box>
             {/* <CircularProgress color="inherit"  />; */}
             <Grid container direction="row" m={1}>
+                <Alert severity="error" sx={{ position: 'absolute', width: '200px', right: 5, top: -85, display: display }}>
+                    Has superado el stock
+                </Alert>
                 <Typography variant="h6" color="initial" sx={stylesCount} onClick={handleCountMin}>
                     -
                 </Typography>

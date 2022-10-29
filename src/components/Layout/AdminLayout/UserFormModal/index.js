@@ -26,7 +26,7 @@ const UserFormModal = ({ openFormModal, setOpenFormModal }) => {
     };
 
     const handleInputChange = (e) => {
-        const { name, value } = e.currentTarget;
+        const { name, value } = e.target;
 
         setUserData({
             ...userData,
@@ -141,12 +141,13 @@ const UserFormModal = ({ openFormModal, setOpenFormModal }) => {
                                 <Select
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
-                                    value={typeUser}
+                                    defaultValue={userData.rol_id}
                                     label="Ordenar por"
-                                    onChange={handleChange}
+                                    onChange={handleInputChange}
+                                    name="rol_id"
                                 >
-                                    <MenuItem value={'admin'}>Admin</MenuItem>
-                                    <MenuItem value={'user'}>User</MenuItem>
+                                    <MenuItem value={1}>User</MenuItem>
+                                    <MenuItem value={2}>Admin</MenuItem>
                                 </Select>
                             </FormControl>
                         </Grid>

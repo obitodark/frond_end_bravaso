@@ -4,12 +4,16 @@ import { ViewDetailsImage, ViewDetailsData, ViewDetailsTabs, ViewCarruselProduct
 import { DataContext } from '../../Context/DataProvider';
 
 const DetailsProduct = () => {
-    const { listProduct, idProduct } = useContext(DataContext);
+    const { listProduct, idProduct, refreshDetailProduct } = useContext(DataContext);
     const [dataProduct, setDataProduct] = useState([]);
+    const [productByCategories, setProductByCategories] = useState([]);
     const [images, setImages] = useState([]);
+
     const getProduct = async () => {
         const product = listProduct.filter((data) => data.id === idProduct);
         await setDataProduct(product[0]);
+
+        const filter = listProduct.filter((data) => data.subcategory.id === product[0].subcategory.id);
         const dat = product[0].images
             .map((data) => {
                 return data;
@@ -17,11 +21,12 @@ const DetailsProduct = () => {
             .filter((ima) => ima.images.status === true);
 
         setImages(dat);
-        console.log('gagaaagag', product[0]);
+        setProductByCategories(filter);
+        // console.log('filtro por subcategories', filter);
     };
     useEffect(() => {
         getProduct();
-    }, []);
+    }, [refreshDetailProduct]);
 
     return (
         <Container maxWidth="xl">
@@ -67,10 +72,10 @@ const DetailsProduct = () => {
                 p={3}
                 sx={{ border: '1px rgba(202, 198, 198,0.4) solid ', background: '#EEEEEE', borderRadius: '5px' }}
             >
-                <Typography variant="h5" color="initial" m={2}>
+                <Typography variant="h6" color="initial" m={2} fontWeight={200}>
                     Productos Relacionados que podrían interesarte
                 </Typography>
-                <ViewCarruselProduct />
+                <ViewCarruselProduct data={productByCategories} />
             </Grid>
         </Container>
     );

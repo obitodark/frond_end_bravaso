@@ -54,13 +54,17 @@ const CartProducts = ({ data, styleText, refresh, setRefresh }) => {
     const [value, setValue] = useState(0);
     const [hiden, setHiden] = useState(true);
     const history = useNavigate();
-    const { setIdProduct, bandera, setBandera, refreshCount, setRefreshCount } = useContext(DataContext);
+    const { setIdProduct, bandera, setBandera, refreshCount, setRefreshCount, refreshDetailProduct, setRefreshDetailProduct } =
+        useContext(DataContext);
 
     const img = useRef();
 
     const handleAddCard = (id) => {
-        setIdProduct(id);
+        const code = id;
+        setIdProduct(code);
         history('/Details-Product');
+        const status = !refreshDetailProduct;
+        setRefreshDetailProduct(status);
         // console.log(typeof id);
     };
 
@@ -72,7 +76,7 @@ const CartProducts = ({ data, styleText, refresh, setRefresh }) => {
         if (imgs === undefined) return;
         img.current.src = String(imgs);
         // img.current.style = { styles_img };
-        console.log(imgs);
+        // console.log(imgs);
         setHiden(false);
     };
     const handleOutBox = (imgs) => {

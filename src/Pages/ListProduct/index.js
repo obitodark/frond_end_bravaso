@@ -1,4 +1,5 @@
 import { Grid, Typography, Container, Box } from '@mui/material';
+import { useContext } from 'react';
 import {
     ViewProductCart,
     ViewCarrusuelimages,
@@ -6,8 +7,11 @@ import {
     ViewCategoriesFeatured,
     ViewCarruselImagesBrands
 } from '../../components';
+import { DataContext } from '../../Context/DataProvider';
 
 const ListProduct = () => {
+    const { listProduct } = useContext(DataContext);
+
     return (
         <Box>
             <ViewCarrusuelimages />
@@ -19,7 +23,7 @@ const ListProduct = () => {
                         <Typography variant="h5" color="initial" sx={{ fontWeight: '300', color: 'rgba(102,102,102)' }}>
                             Productos Recomendados
                         </Typography>
-                        <ViewCarruselProduct />
+                        <ViewCarruselProduct data={listProduct} />
                     </Grid>
                 </Grid>
 

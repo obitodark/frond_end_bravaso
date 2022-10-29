@@ -12,7 +12,7 @@ const getList = async (url) => {
             }
         });
         const { data } = await response.json();
-        console.log('data', data);
+        // console.log('data', data);
         return data;
     } catch (error) {
         return error;
@@ -30,7 +30,7 @@ const createItem = async (url, datas) => {
             body: JSON.stringify(datas)
         });
         const { data } = await response.json();
-        console.log('data', data);
+        // console.log('data', data);
         return data;
     } catch (error) {
         return error;

@@ -37,6 +37,7 @@ const DataProvider = ({ children }) => {
     const [refreshBrands, setRefreshBrands] = useState(false);
     const [listTypeMaterial, setListTypeMaterial] = useState([]);
     const [refreshSource, setRefreshSource] = useState(true);
+    const [refreshDetailProduct, setRefreshDetailProduct] = useState(true);
     // const [dataUser, setDataUser] = useState({});
     /*********************************** */
     const getListProduct = async () => {
@@ -175,7 +176,9 @@ const DataProvider = ({ children }) => {
                 setListSource,
                 listTypeMaterial,
                 refreshSource,
-                setRefreshSource
+                setRefreshSource,
+                refreshDetailProduct,
+                setRefreshDetailProduct
             }}
         >
             {children}

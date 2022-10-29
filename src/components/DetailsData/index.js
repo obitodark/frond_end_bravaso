@@ -108,7 +108,7 @@ const DetailsData = ({ dataProduct }) => {
                     </Grid>
 
                     <Grid item xs={12}>
-                        <ButtonPrimary size={'large'} width_full={'70'} onClick={handleOpenModal}>
+                        <ButtonPrimary size={'large'} width_full={'100'} onClick={handleOpenModal}>
                             Add To Car
                         </ButtonPrimary>
                     </Grid>

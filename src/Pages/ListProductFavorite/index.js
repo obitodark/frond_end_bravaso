@@ -1,4 +1,4 @@
-import { Grid, Container, Typography, Button } from '@mui/material';
+import { Grid, Container, Typography, Button, Divider } from '@mui/material';
 import { useState, useContext } from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -37,7 +37,7 @@ const ListProductFavorite = () => {
     const getlist = async () => {
         const response = await FavoriteProductServices.listProductFavites();
         setProductFavorite(response);
-        console.log('list', response);
+        // console.log('list', response);
     };
 
     const addElement = (data) => {
@@ -57,6 +57,7 @@ const ListProductFavorite = () => {
                     <Typography variant="body1" color="initial" fontWeight={350}>
                         Inicio/Favorites ({productFavorite !== undefined ? productFavorite.length : 0})
                     </Typography>
+                    <Divider sx={{ background: 'black' }} mt={1} />
                 </Grid>
                 <Grid item container xs={12} sm={12} md={9.5} xl={9.5} spacing={1.5}>
                     <Grid

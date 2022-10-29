@@ -5,8 +5,13 @@ import Swal from 'sweetalert2';
 
 import { DataContext } from '../../../../Context/DataProvider';
 import Products from '../../../../services/ProductsServices';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridToolbarContainer, GridToolbarExport } from '@mui/x-data-grid';
 import { useNavigate } from 'react-router-dom';
+// import {
+//     DataGridPremium,
+//     GridToolbarContainer,
+//     GridToolbarExport,
+//   } from '@mui/x-data-grid-premium';
 const TableData = () => {
     const { listProduct, resfresh, setResfresh } = useContext(DataContext);
     const { setIdProduct, setProductData, setUtilsData } = useContext(DataAdminContext);
@@ -27,7 +32,7 @@ const TableData = () => {
         { field: `price`, headerName: 'price', width: 100 },
         { field: `stock`, headerName: 'stock', width: 50 },
         { field: `namecategoria`, headerName: 'categoria', width: 150 },
-        { field: `namesubcategoria`, headerName: 'categoria', width: 100 },
+        { field: `namesubcategoria`, headerName: 'Subcategoria', width: 100 },
         {
             field: 'clck',
             headerName: 'action',
@@ -84,6 +89,13 @@ const TableData = () => {
     }, []);
     // *********************************************
 
+    function CustomToolbar() {
+        return (
+            <GridToolbarContainer>
+                <GridToolbarExport />
+            </GridToolbarContainer>
+        );
+    }
     const handleDeleteProduct = async (id) => {
         Swal.fire({
             title: `Seguro que desea eliminar este Producto?`,
@@ -158,6 +170,9 @@ const TableData = () => {
                 rowHeight={70}
                 getRowSpacing={getRowSpacing}
                 getRowClassName={(params) => (params.indexRelativeToCurrentPage % 2 === 0 ? 'even' : 'odd')}
+                components={{
+                    Toolbar: CustomToolbar
+                }}
             />
         </div>
     );

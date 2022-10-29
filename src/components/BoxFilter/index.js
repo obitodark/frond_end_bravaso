@@ -62,7 +62,7 @@ const BoxFilter = () => {
     };
 
     return (
-        <Container sx={{ background: ' #eeeeee', borderRadius: '5px', border: '1px rgba(0, 0, 0, .2) solid ' }}>
+        <Container sx={{ background: ' #eeeeee', borderRadius: '5px', border: '1px rgba(0, 0, 0, .1) solid ' }}>
             <Grid container justifyContent="space-between" p={2} direction="row">
                 <Grid item container xs={12} sm={12} lg={6} sx={{ justifyContent: { sm: 'center', lg: 'start' } }}>
                     <Grid item xs={12} sm={10} mb={1}>

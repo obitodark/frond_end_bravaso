@@ -41,7 +41,7 @@ const ImageScreenBig = ({ dataProduct, images }) => {
                     {/* {console.log(`iiiiiiiiiiiiiiiiiiiiiiiiiiii`, dataProduct.images)} */}
                     {images !== undefined &&
                         images.map((data, index) => (
-                            <Grid item xs={1.5} key={index} mx={1} mt={2}>
+                            <Grid item xs={1.5} key={index} mx={1} mt={1.5}>
                                 <Button sx={styles_card} size="small">
                                     <img
                                         width="100%"
@@ -81,7 +81,7 @@ const DetailsImages = ({ dataProduct, images }) => {
     return (
         <div>
             {/* {getImage()} */}
-            {console.log('images de producto', images)}
+            {/* {console.log('images de producto', images)} */}
             {/* <ImageScreenBig dataProduct={dataProduct} /> */}
             {width >= 1200 ? <ImageScreenBig dataProduct={dataProduct} images={images} /> : <ImageScreenSmall dataProduct={dataProduct} />}
         </div>
