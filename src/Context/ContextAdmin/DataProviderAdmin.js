@@ -61,7 +61,7 @@ const DataProviderAdmin = ({ children }) => {
         username: '',
         dni: '',
         email: '',
-        rol_id: 0,
+        rol_id: 1,
         status: true
     });
 
