@@ -116,20 +116,35 @@ const ActionProduct = () => {
                 status: true,
                 text: 'Creando Producto...'
             };
+
             setLoading(data);
             const response = await ProductsServices.createProduct(productData);
 
             const id = `${response.data.id}_prod`;
             console.log('id', id, 'response', response);
-            await Promise.all(
-                state.map(async (item, index) => {
-                    let key = `imagen${index}`;
-                    console.log(item[key]);
+            // await Promise.all(
+            // state.map(async (item, index) => {
+            let num = 0;
+            let num1 = 0;
+            for (const item of state) {
+                let key = `imagen${num}`;
+                console.log('perrro');
+                console.log(item[key]);
 
-                    if (item[key] === '') return;
-                    await ImagesServices.createImages(item[key].file, id);
-                })
-            );
+                if (item[key] === '') {
+                    history('/Panel-Admin/list-product');
+                    window.location.reload();
+                }
+
+                await ImagesServices.createImages(item[key].file, id);
+                console.log('perrro1');
+                num++;
+            }
+            // );
+            console.log('perrro');
+            setLoading({ ...data, status: false });
+            history('/Panel-Admin/list-product');
+            window.location.reload();
         }
 
         history('/Panel-Admin/list-product');
